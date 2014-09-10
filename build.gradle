@@ -1,0 +1,42 @@
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.12'
+}
+
+apply plugin: 'java'
+
+compileJava.sourceCompatibility = '1.6'
+compileJava.targetCompatibility = '1.6'
+
+configurations {
+	packaged
+	compile {
+		extendsFrom packaged
+	}
+}
+
+dependencies {
+	compile files('lib/go-plugin-api-14.2.0.jar')
+	packaged 'commons-io:commons-io:2.4'
+	packaged 'commons-lang:commons-lang:2.6'
+	packaged 'org.codehaus.groovy:groovy:2.3.6'
+	packaged 'org.codehaus.groovy:groovy-jsr223:2.3.6'
+	packaged 'org.codehaus.groovy:groovy-xml:2.3.6'
+
+	testCompile 'junit:junit:4.11'
+	testCompile 'org.mockito:mockito-core:1.8.5'
+}
+
+jar {
+	manifest {
+		attributes 'Go-Version': '14.2.0'
+	}
+	into('lib') {
+		from configurations.packaged
+	}
+}

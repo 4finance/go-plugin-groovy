@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<go-plugin id="groovy.task.plugin" version="1">
+    <about>
+        <name>Groovy Task Plugin</name>
+        <version>1.0</version>
+        <target-go-version>14.2.0</target-go-version>
+        <description>
+           Task plugin that supports groovy scriptlet execution
+        </description>
+        <vendor>
+            <name>4Finance</name>
+            <url>www.4finance.com</url>
+        </vendor>
+        <target-os>
+            <value>Linux</value>
+        </target-os>
+    </about>
+</go-plugin>
