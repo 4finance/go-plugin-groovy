@@ -50,7 +50,8 @@ public class GroovyTask implements Task {
     @Override
     public ValidationResult validate(TaskConfig configuration) {
         ValidationResult validationResult = new ValidationResult();
-        if (configuration.getValue(SCRIPT_PROPERTY) == null || configuration.getValue(SCRIPT_PROPERTY).trim().isEmpty()) {
+        if (configuration.getValue(SCRIPT_PROPERTY) == null || configuration.getValue(
+                SCRIPT_PROPERTY).trim().isEmpty()) {
             validationResult.addError(new ValidationError(SCRIPT_PROPERTY, "Script cannot be empty"));
         }
         return validationResult;

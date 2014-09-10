@@ -6,7 +6,7 @@
         <version>1.0</version>
         <target-go-version>14.2.0</target-go-version>
         <description>
-           Task plugin that supports groovy scriptlet execution
+            Task plugin that supports groovy scriptlet execution
         </description>
         <vendor>
             <name>4Finance</name>
