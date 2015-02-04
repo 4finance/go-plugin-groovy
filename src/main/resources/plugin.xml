@@ -4,7 +4,7 @@
     <about>
         <name>Groovy Task Plugin</name>
         <version>1.0</version>
-        <target-go-version>14.2.0</target-go-version>
+        <target-go-version>14.4.0</target-go-version>
         <description>
             Task plugin that supports groovy scriptlet execution
         </description>
