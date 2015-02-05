@@ -1,40 +1,40 @@
 version = '1.0.1'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.2.1'
+    gradleVersion = '2.2.1'
 }
 
-apply plugin: 'java'
-
-compileJava.sourceCompatibility = '1.6'
-compileJava.targetCompatibility = '1.6'
+apply plugin: 'groovy'
 
 configurations {
-	packaged
-	compile {
-		extendsFrom packaged
-	}
+    packaged
+    compile {
+        extendsFrom packaged
+    }
 }
 
 dependencies {
-	compile  'cd.go.plugin:go-plugin-api:14.4.0'
-	packaged 'commons-io:commons-io:2.4'
-	packaged 'commons-lang:commons-lang:2.6'
-	packaged 'org.codehaus.groovy:groovy-all:2.4.0'
+    compile  'cd.go.plugin:go-plugin-api:14.4.0'
+    packaged 'commons-io:commons-io:2.4'
+    packaged 'commons-lang:commons-lang:2.6'
+    packaged 'org.codehaus.groovy:groovy-all:2.4.0'
 
-	testCompile 'junit:junit:4.11'
-	testCompile 'org.mockito:mockito-core:1.8.5'
+    // can't use groovy JSON slurper/parser because of go.cd class loading unable to handle sun.misc.Unsafe
+    packaged 'com.fasterxml.jackson.core:jackson-databind:2.5.0'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testRuntime 'cglib:cglib-nodep:3.1'
 }
 
 jar {
-	manifest {
-		attributes 'Go-Version': '14.4.0'
-	}
-	into('lib') {
-		from configurations.packaged
-	}
+    manifest {
+        attributes 'Go-Version': '14.4.0'
+    }
+    into('lib') {
+        from configurations.packaged
+    }
 }
