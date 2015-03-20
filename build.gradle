@@ -17,6 +17,7 @@ configurations {
     }
 }
 
+sourceCompatibility = '1.6'
 dependencies {
     compile  'cd.go.plugin:go-plugin-api:14.4.0'
     packaged 'commons-io:commons-io:2.4'
