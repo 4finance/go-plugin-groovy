@@ -32,5 +32,5 @@ if (0 != shell.runNicely('the command'))
 ### Working directory
 Shell commands as described above are always executed in the pipeline working directory. When explicit access to working directory is needed, `workingDir` can be used:
 ```
-println(new File(workingDir, 'file-name.txt')).text
+println(new File(workingDir, 'file-name.txt').text)
 ```
