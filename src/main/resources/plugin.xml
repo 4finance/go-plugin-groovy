@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<go-plugin id="groovy.task.plugin" version="1">
+<go-plugin id="${id}" version="1">
     <about>
-        <name>Groovy Task Plugin</name>
-        <version>1.0.1</version>
-        <target-go-version>14.4.0</target-go-version>
-        <description>
-            Task plugin that supports groovy scriptlet execution
-        </description>
+        <name>${name}</name>
+        <version>${version}</version>
+        <target-go-version>${goCdVersion}</target-go-version>
+        <description>${description}</description>
         <vendor>
-            <name>4Finance</name>
-            <url>www.4finance.com</url>
+            <name>${vendorName}</name>
+            <url>${vendorUrl}</url>
         </vendor>
-        <target-os>
-            <value>Linux</value>
-        </target-os>
     </about>
 </go-plugin>
