@@ -1,5 +1,7 @@
 version = '1.0.1'
 
+def GOCD_TARGET_VERSION = '14.4.0'
+
 repositories {
     mavenCentral()
 }
@@ -17,12 +19,22 @@ configurations {
     }
 }
 
-sourceCompatibility = '1.6'
+project.ext.pluginDesc = [
+  id         : 'groovy.task.plugin',
+  version    : project.version,
+  goCdVersion: GOCD_TARGET_VERSION,
+  name       : 'Groovy Task Plugin',
+  description: 'Task plugin that supports groovy scriptlet execution',
+  vendorName : '4Finance',
+  vendorUrl  : 'www.4finance.com'
+]
+
+sourceCompatibility = '1.7'
 dependencies {
-    compile  'cd.go.plugin:go-plugin-api:14.4.0'
+    compile  "cd.go.plugin:go-plugin-api:${GOCD_TARGET_VERSION}"
     packaged 'commons-io:commons-io:2.4'
     packaged 'commons-lang:commons-lang:2.6'
-    packaged 'org.codehaus.groovy:groovy-all:2.4.0'
+    packaged 'org.codehaus.groovy:groovy-all:2.5.7'
 
     // can't use groovy JSON slurper/parser because of go.cd class loading unable to handle sun.misc.Unsafe
     packaged 'com.fasterxml.jackson.core:jackson-databind:2.5.0'
@@ -31,9 +43,17 @@ dependencies {
     testRuntime 'cglib:cglib-nodep:3.1'
 }
 
+processResources {
+  from("src/main/resources") {
+    filesMatching('plugin.xml') {
+      expand project.pluginDesc
+    }
+  }
+}
+
 jar {
     manifest {
-        attributes 'Go-Version': '14.4.0'
+        attributes 'Go-Version': GOCD_TARGET_VERSION
     }
     into('lib') {
         from configurations.packaged
